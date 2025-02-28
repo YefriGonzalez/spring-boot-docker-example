@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'maven:3.8.4-jdk-11' }
-    }
+    agent any
     
     environment {
         IMAGE_NAME = "mi-backend"
