@@ -17,9 +17,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                def mvnHome = tool 'Maven 3.9.9'
-                // Comando para compilar el proyecto
-                sh "'${mvnHome}/bin/mvn' clean package -DskipTests"
+                withMaven {
+                  sh "mvn clean package -DskipTests"
+                }
             }
         }
 
