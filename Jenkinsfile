@@ -9,9 +9,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Mostramos la rama actual en el log
-                def branchName = env.BRANCH_NAME ?: 'main' // Usa 'main' por defecto si no se encuentra la variable
-                branchName = branchName.replaceAll(/^origin\//, '') // Elimina el prefijo 'origin/' si está presente
+                def branchName = env.BRANCH_NAME
+                branchName = branchName.replaceAll(/^origin\//, '')
                 echo "Branch: ${branchName}"
                 echo "Rama actual: ${env.GIT_BRANCH}"
                 // Hacemos checkout de la rama usando GIT_BRANCH
