@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.x'  // Utiliza el nombre de la configuración de Maven en Jenkins
-    }
     environment {
         IMAGE_NAME = "mi-backend"
         CONTAINER_NAME = "backend-container"
@@ -11,17 +8,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo "Rama actual: ${env.GIT_BRANCH.replaceAll(/^origin\//, '')}"
-                // Hacemos checkout de la rama usando GIT_BRANCH
                 git branch: "${env.GIT_BRANCH.replaceAll(/^origin\//, '')}", credentialsId: 'github-credentials', url: 'https://github.com/YefriGonzalez/spring-boot-docker-example.git'
             }
         }
 
         stage('Build') {
             steps {
-                withMaven() {
-                    sh "mvn clean package -DskipTests"
-                }
+                sh "mvn clean package -DskipTests"
             }
         }
 
