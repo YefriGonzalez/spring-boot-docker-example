@@ -9,10 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                def branchName = env.BRANCH_NAME
-                branchName = branchName.replaceAll(/^origin\//, '')
-                echo "Branch: ${branchName}"
-                echo "Rama actual: ${env.GIT_BRANCH}"
+                echo "Rama actual: ${env.GIT_BRANCH.replaceAll(/^origin\//, '')}"
                 // Hacemos checkout de la rama usando GIT_BRANCH
                 git branch: "${branchName}", credentialsId: 'github-credentials', url: 'https://github.com/YefriGonzalez/spring-boot-docker-example.git'
             }
