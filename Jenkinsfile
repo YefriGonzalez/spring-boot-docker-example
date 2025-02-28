@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.25'  // Utiliza el nombre de la configuración de Maven en Jenkins
+        maven 'Maven 3.x'  // Utiliza el nombre de la configuración de Maven en Jenkins
     }
     environment {
         IMAGE_NAME = "mi-backend"
