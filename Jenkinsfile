@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "Rama actual: ${env.GIT_BRANCH.replaceAll(/^origin\//, '')}"
                 // Hacemos checkout de la rama usando GIT_BRANCH
-                git branch: "${branchName}", credentialsId: 'github-credentials', url: 'https://github.com/YefriGonzalez/spring-boot-docker-example.git'
+                git branch: "${env.GIT_BRANCH.replaceAll(/^origin\//, '')}", credentialsId: 'github-credentials', url: 'https://github.com/YefriGonzalez/spring-boot-docker-example.git'
             }
         }
 
