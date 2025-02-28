@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.4-jdk-11'
-            label 'docker'  // Si quieres usar un nodo específico con Docker.
-        }
-    }
+    agent any
     
     environment {
         IMAGE_NAME = "mi-backend"
@@ -22,8 +17,9 @@ pipeline {
 
         stage('Build') {
             steps {
+                def mvnHome = tool 'Maven 3.9.9'
                 // Comando para compilar el proyecto
-                sh 'mvn clean package -DskipTests'
+                sh "'${mvnHome}/bin/mvn' clean package -DskipTests"
             }
         }
 
