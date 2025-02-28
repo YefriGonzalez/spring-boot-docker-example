@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.8.4-jdk-11'
+            label 'docker'  // Si quieres usar un nodo específico con Docker.
+        }
+    }
     
     environment {
         IMAGE_NAME = "mi-backend"
